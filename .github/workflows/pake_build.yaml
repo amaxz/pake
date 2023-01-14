@@ -69,3 +69,9 @@ jobs:
       run: |
         npm run build:all-windows
 
+    - name: Upload files
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        curl -L https://github.com/probonopd/uploadtool/raw/master/upload.sh --output upload.sh
+        bash upload.sh output/*/*.*
